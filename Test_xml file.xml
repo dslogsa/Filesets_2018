@@ -1,0 +1,528 @@
+<diagnosticwp wpno="TTE1002">
+  <wp.metadata>
+    <portionmark />
+    <proponent>
+      <name />
+      <address>
+        <city />
+        <state />
+      </address>
+    </proponent>
+    <tracking>
+      <change.history>
+        <author>
+          <name>troy.tompkins</name>
+          <proponent>
+            <name />
+            <address>
+              <city />
+              <state />
+            </address>
+          </proponent>
+        </author>
+        <date julian="2453536">06/14/2005 15:54</date>
+        <wp.status type="changed" />
+        <reason />
+      </change.history>
+    </tracking>
+    <tminfono>
+      <servbranch service="army" />
+      <tmno />
+    </tminfono>
+    <applicability>UOC_CPH UOC_MRS</applicability>
+    <subsystem-system>
+      <systemnomen>
+        <name>Electrical System Troubleshooting Work Packages</name>
+      </systemnomen>
+    </subsystem-system>
+  </wp.metadata>
+  <wpidinfo>
+    <maintlvl level="operator" />
+    <title>12 VDC AND 24 VDC CIRCUITS DO NOT OPERATE</title>
+  </wpidinfo>
+  <wpinfo>
+    <eqpconds>
+      <eqpconds-setup-item>
+        <condition>Engine shut down.</condition>
+        <itemref>
+          <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="return"
+          xlink:href="IETM://OO102017" xreftype="wp" expanded="yes">
+            <prompt>Engine shut down.</prompt>
+          </link>
+        </itemref>
+      </eqpconds-setup-item>
+    </eqpconds>
+  </wpinfo>
+  <testwithstate id="TP01">
+    <reasonfortest>
+      <title>Has Operator PMCS (Before Operation) been performed?</title>
+      <para>This question eliminates possible problems and determines where to continue
+      troubleshooting.</para>
+    </reasonfortest>
+    <statemanipulation>
+      <variable description="fault" name="PF01" scope="local" value-type="fault">
+        <initialize>
+          <fault fault-code="PF01" fault-state="possible" weight="">
+            <oktext>Battery disconnect switch in connect position.</oktext>
+            <badtext>Battery disconnect switch in disconnect position.</badtext>
+            <possibletext>Battery disconnect switch in disconnect position.</possibletext>
+          </fault>
+        </initialize>
+      </variable>
+    </statemanipulation>
+    <statemanipulation>
+      <variable description="fault" name="PF02" scope="local" value-type="fault">
+        <initialize>
+          <fault fault-code="PF02" fault-state="possible" weight="">
+            <oktext>Remote battery disconnect switch in connect position.</oktext>
+            <badtext>Remote battery disconnect switch in disconnect position.</badtext>
+            <possibletext>Remote battery disconnect switch in disconnect position.</possibletext>
+          </fault>
+        </initialize>
+      </variable>
+    </statemanipulation>
+    <statemanipulation>
+      <variable description="fault" name="PF07" scope="local" value-type="fault">
+        <initialize>
+          <fault fault-code="PF07" fault-state="possible" weight="">
+            <oktext>Manual Battery Disconnect Switch (MBDS) in connect position.</oktext>
+            <badtext>Manual Battery Disconnect Switch (MBDS) in disconnect position.</badtext>
+            <possibletext>Manual Battery Disconnect Switch (MBDS) in disconnect
+            position.</possibletext>
+          </fault>
+        </initialize>
+      </variable>
+    </statemanipulation>
+    <statemanipulation>
+      <variable description="fault" name="PF03" scope="local" value-type="fault">
+        <initialize>
+          <fault fault-code="PF03" fault-state="possible" weight="">
+            <oktext>Batteries not damaged.</oktext>
+            <badtext>Batteries damaged.</badtext>
+            <possibletext>Batteries damaged.</possibletext>
+          </fault>
+        </initialize>
+      </variable>
+    </statemanipulation>
+    <statemanipulation>
+      <variable description="fault" name="PF04" scope="local" value-type="fault">
+        <initialize>
+          <fault fault-code="PF04" fault-state="possible" weight="">
+            <oktext>Battery cables OK.</oktext>
+            <badtext>Battery cables faulty.</badtext>
+            <possibletext>Battery cables faulty.</possibletext>
+          </fault>
+        </initialize>
+      </variable>
+    </statemanipulation>
+    <statemanipulation>
+      <variable description="fault" name="PF05" scope="local" value-type="fault">
+        <initialize>
+          <fault fault-code="PF05" fault-state="possible" weight="">
+            <oktext>Battery posts OK.</oktext>
+            <badtext>Battery posts faulty.</badtext>
+            <possibletext>Battery posts faulty.</possibletext>
+          </fault>
+        </initialize>
+      </variable>
+    </statemanipulation>
+    <statemanipulation>
+      <variable description="fault" name="PF06" scope="local" value-type="fault">
+        <initialize>
+          <fault fault-code="PF06" fault-state="possible" weight="">
+            <oktext>Battery fluid level OK.</oktext>
+            <badtext>Battery fluid level faulty.</badtext>
+            <possibletext>Battery fluid level faulty.</possibletext>
+          </fault>
+        </initialize>
+      </variable>
+    </statemanipulation>
+    <proc>
+      <title>Has Operator PMCS (Before Operation) been performed?</title>
+      <step1>
+        <para>Determine if Operator PMCS (Before Operation) has been performed.</para>
+      </step1>
+      <step1 comment="ietm">
+        <para>Select appropriate button.</para>
+        <step2>
+          <para>If PMCS Before checks have not been performed, click on 
+          <emphasis emph="bold">Perform PMCS</emphasis>button.</para>
+        </step2>
+        <step2>
+          <para>If PMCS Before checks have been performed, click on 
+          <emphasis emph="bold">PMCS Performed</emphasis>button.</para>
+        </step2>
+      </step1>
+    </proc>
+    <interaction>
+      <dialog>
+        <menu flow="inline" select="single" type="button">
+          <prompt />
+          <choice>
+            <text>Perform PMCS</text>
+            <statemanipulation>
+              <variable name="TP01_PERFORMPMCS" scope="local" value-type="boolean" />
+            </statemanipulation>
+          </choice>
+          <choice>
+            <text>PMCS Performed</text>
+            <statemanipulation>
+              <variable name="TP01_PMCSPERFORMED" scope="local" value-type="boolean" />
+            </statemanipulation>
+          </choice>
+        </menu>
+      </dialog>
+    </interaction>
+    <evaluate>
+      <if>
+        <expression>
+          <variableref name="TP01_PMCSPERFORMED" />
+        </expression>
+        <then>
+          <resultwithstate>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="return"
+            xlink:href="IETM://TTE1002#TP02" xreftype="test" />
+            <statemanipulation>
+              <variableref name="PF01" />
+              <fault fault-code="PF01" fault-state="ok"></fault>
+            </statemanipulation>
+            <statemanipulation>
+              <variableref name="PF02" />
+              <fault fault-code="PF02" fault-state="ok"></fault>
+            </statemanipulation>
+            <statemanipulation>
+              <variableref name="PF07" />
+              <fault fault-code="PF07" fault-state="ok"></fault>
+            </statemanipulation>
+          </resultwithstate>
+        </then>
+        <elseif>
+          <expression>
+            <variableref name="TP01_PERFORMPMCS" />
+          </expression>
+          <then>
+            <resultwithstate>
+              <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt"
+              linktype="return" xlink:href="IETM://IOPMCS10B" xreftype="wp">
+                <prompt>Perform Operator PMCS (Before Operation).</prompt>
+              </link>
+            </resultwithstate>
+          </then>
+        </elseif>
+      </if>
+    </evaluate>
+  </testwithstate>
+  <testwithstate id="TP02">
+    <reasonfortest>
+      <title>Are batteries, battery cables, and terminal posts free from damage or
+      corrosion?</title>
+      <para>12 VDC and 24 VDC Circuits will not operate if batteries, battery cables, or posts are
+      damaged or corroded.</para>
+    </reasonfortest>
+    <proc>
+      <title>Are batteries, battery cables, and terminal posts free from damage or
+      corrosion?</title>
+      <step1>
+        <specpara>
+          <warning id="W3083">
+            <icon-set boardno="xplsn.png" />
+            <icon-set boardno="fire.png" />
+            <trim.para>Lead-acid battery gases can explode. Do not smoke, have open flames, or make
+            sparks around a battery, especially if caps are off. Battery may give off gas which can
+            explode. Failure to comply may result in serious injury or death to
+            personnel.</trim.para>
+          </warning>
+          <warning id="W38">
+            <icon-set boardno="smshfing.png" />
+            <icon-set boardno="Xplosion.png" />
+            <icon-set boardno="LECTROCT.png" />
+            <trim.para>Remove rings, bracelets, watches, necklaces, and any other jewelry before
+            working around vehicle. Jewelry can catch on equipment and cause injury or short across
+            electrical circuit and cause severe burns or electrical shock. Failure to comply may
+            result in injury to personnel.</trim.para>
+          </warning>
+          <para>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="return"
+            xlink:href="IETM://MM102004" xreftype="wp">
+              <prompt>Open battery box</prompt>
+            </link>
+          </para>
+        </specpara>
+      </step1>
+      <step1>
+        <specpara>
+          <note>
+            <trim.para>Older batteries are being replaced with sealed Hawker Armasafe
+            batteries.</trim.para>
+          </note>
+          <para>Check batteries, battery cables, and terminal posts for apparent damage and
+          corrosion. 
+          <figure id="TTE1002_id1">
+            <title>Batteries, Battery Cables, and Terminal Posts - Wet Cell Batteries.</title>
+            <graphic boardno="hte1002rs01.png" />
+          </figure>
+          <figure id="TTE1002_id2">
+            <title>Batteries, Battery Cables, And Terminal Posts - Hawker Batteries.</title>
+            <graphic boardno="D14510.png" />
+          </figure></para>
+        </specpara>
+      </step1>
+      <step1 comment="ietm">
+        <para>Select appropriate button:</para>
+        <step2>
+          <para>If damage or corrosion is present, click on 
+          <emphasis emph="bold">Damage Present</emphasis>button.</para>
+        </step2>
+        <step2>
+          <para>If no damage or corrosion is present, click on 
+          <emphasis emph="bold">No Damage</emphasis>button.</para>
+        </step2>
+      </step1>
+    </proc>
+    <interaction>
+      <dialog>
+        <menu flow="list" select="single" type="radio">
+          <prompt />
+          <choice>
+            <text>Damage Present</text>
+            <statemanipulation>
+              <variable name="TP02_id1358625" scope="local" value-type="boolean" />
+            </statemanipulation>
+          </choice>
+          <choice applicable="">
+            <text>No Damage</text>
+            <statemanipulation>
+              <variable name="TP02_id1359132" scope="local" value-type="boolean" />
+            </statemanipulation>
+          </choice>
+        </menu>
+      </dialog>
+    </interaction>
+    <evaluate>
+      <if>
+        <expression>
+          <variableref name="TP02_id1358625" />
+        </expression>
+        <then>
+          <resultwithstate>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="return"
+            xlink:href="IETM://TS1UPP#TP92" xreftype="test">
+              <prompt>Notify Field Maintenance batteries and/or battery cables need
+              replacement.</prompt>
+            </link>
+          </resultwithstate>
+        </then>
+        <elseif>
+          <expression>
+            <variableref name="TP02_id1359132" />
+          </expression>
+          <then>
+            <resultwithstate>
+              <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt"
+              linktype="return" xlink:href="IETM://TTE1002#TP03" xreftype="test" />
+              <statemanipulation>
+                <variableref name="PF01" />
+                <fault fault-code="PF01" fault-state="ok"></fault>
+              </statemanipulation>
+              <statemanipulation>
+                <variableref name="PF02" />
+                <fault fault-code="PF02" fault-state="ok"></fault>
+              </statemanipulation>
+              <statemanipulation>
+                <variableref name="PF07" />
+                <fault fault-code="PF07" fault-state="ok"></fault>
+              </statemanipulation>
+              <statemanipulation>
+                <variableref name="PF03" />
+                <fault fault-code="PF03" fault-state="ok"></fault>
+              </statemanipulation>
+              <statemanipulation>
+                <variableref name="PF04" />
+                <fault fault-code="PF04" fault-state="ok"></fault>
+              </statemanipulation>
+              <statemanipulation>
+                <variableref name="PF05" />
+                <fault fault-code="PF05" fault-state="ok"></fault>
+              </statemanipulation>
+            </resultwithstate>
+          </then>
+        </elseif>
+      </if>
+    </evaluate>
+  </testwithstate>
+  <testwithstate id="TP03">
+    <reasonfortest>
+      <title>Are battery cells at appropriate fluid levels?</title>
+      <para>Batteries will not hold a charge if fluid levels are low in battery cells.</para>
+    </reasonfortest>
+    <proc>
+      <title>Are battery cells at appropriate fluid levels?</title>
+      <note>
+        <note.group>
+          <trim.para>Older batteries are being replaced with sealed Hawker Armasafe batteries.
+          Older batteries shown.</trim.para>
+        </note.group>
+        <note.group>
+          <trim.para>This test does not apply to sealed batteries.</trim.para>
+        </note.group>
+      </note>
+      <step1 comment="ietm">
+        <para>If sealed Hawker batteries are present, press Batteries OK to continue.</para>
+      </step1>
+      <step1>
+        <para>Remove all battery fill caps.</para>
+      </step1>
+      <step1>
+        <para>Check all batteries for fluid visible above plates. 
+        <figure id="TTE1002_id3">
+          <title>Battery Cells.</title>
+          <graphic boardno="hte1002rs02.png" />
+        </figure></para>
+      </step1>
+      <step1>
+        <para>
+        <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="return"
+        xlink:href="IETM://MM102004" xreftype="wp">
+          <prompt>Test all batteries</prompt>
+        </link>.</para>
+      </step1>
+      <step1>
+        <para>Install all battery fill caps.</para>
+      </step1>
+      <step1 comment="ietm">
+        <para>Select appropriate button:</para>
+        <step2>
+          <para>If batteries fail test procedure, click on 
+          <emphasis emph="bold">Batteries Faulty</emphasis>button.</para>
+        </step2>
+        <step2>
+          <para>If batteries pass test procedure, click on 
+          <emphasis emph="bold">Batteries OK</emphasis>button.</para>
+        </step2>
+      </step1>
+    </proc>
+    <interaction>
+      <dialog>
+        <menu flow="inline" select="single" type="button">
+          <prompt />
+          <choice>
+            <text>Batteries Faulty</text>
+            <statemanipulation>
+              <variable name="TP03_BATTERIESFAULTY" scope="local" value-type="boolean"></variable>
+            </statemanipulation>
+          </choice>
+          <choice>
+            <text>Batteries OK</text>
+            <statemanipulation>
+              <variable name="TP03_BATTERIESOK" scope="local" value-type="boolean" />
+            </statemanipulation>
+          </choice>
+        </menu>
+      </dialog>
+    </interaction>
+    <evaluate>
+      <if>
+        <expression>
+          <variableref name="TP03_BATTERIESOK" />
+        </expression>
+        <then>
+          <resultwithstate>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="return"
+            xlink:href="IETM://TTE1002#TP04" xreftype="test" />
+            <statemanipulation>
+              <variableref name="PF01" />
+              <fault fault-code="PF01" fault-state="ok"></fault>
+            </statemanipulation>
+            <statemanipulation>
+              <variableref name="PF02" />
+              <fault fault-code="PF02" fault-state="ok"></fault>
+            </statemanipulation>
+            <statemanipulation>
+              <variableref name="PF07" />
+              <fault fault-code="PF07" fault-state="ok"></fault>
+            </statemanipulation>
+            <statemanipulation>
+              <variableref name="PF03" />
+              <fault fault-code="PF03" fault-state="ok"></fault>
+            </statemanipulation>
+            <statemanipulation>
+              <variableref name="PF04" />
+              <fault fault-code="PF04" fault-state="ok"></fault>
+            </statemanipulation>
+            <statemanipulation>
+              <variableref name="PF05" />
+              <fault fault-code="PF05" fault-state="ok"></fault>
+            </statemanipulation>
+            <statemanipulation>
+              <variableref name="PF06" />
+              <fault fault-code="PF06" fault-state="ok"></fault>
+            </statemanipulation>
+          </resultwithstate>
+        </then>
+        <elseif>
+          <expression>
+            <variableref name="TP03_BATTERIESFAULTY" />
+          </expression>
+          <then>
+            <resultwithstate>
+              <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="goto"
+              xlink:href="IETM://TS1UPP#TP92" xreftype="wp">
+                <prompt>Notify Field Maintenance batteries need to be serviced.</prompt>
+              </link>
+            </resultwithstate>
+          </then>
+        </elseif>
+      </if>
+    </evaluate>
+  </testwithstate>
+  <testwithstate id="TP04">
+    <reasonfortest>
+      <title>Is battery box closed?</title>
+      <para>Return vehicle to original condition to continue.</para>
+    </reasonfortest>
+    <proc>
+      <title>Is battery box closed?</title>
+      <step1>
+        <para>
+          <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="return"
+          xlink:href="IETM://MM102004" xreftype="wp">
+            <prompt>Close battery box.</prompt>
+          </link>
+        </para>
+      </step1>
+      <step1 comment="ietm">
+        <para>Click on 
+        <emphasis emph="bold">Continue</emphasis>button.</para>
+      </step1>
+    </proc>
+    <interaction>
+      <dialog>
+        <menu flow="list" select="single" type="button">
+          <prompt />
+          <choice>
+            <text>Continue</text>
+            <statemanipulation>
+              <variable name="TP04_id1346062" scope="local" value-type="boolean" />
+            </statemanipulation>
+          </choice>
+        </menu>
+      </dialog>
+    </interaction>
+    <evaluate>
+      <if>
+        <expression>
+          <variableref name="TP04_id1346062" />
+        </expression>
+        <then>
+          <resultwithstate>
+            <link xmlns:xlink="http://www.w3.org/1999/xlink" linkaction="prompt" linktype="return"
+            xlink:href="IETM://TS1UPP#TP92" xreftype="test">
+              <prompt>Notify Field Maintenance that 12 VDC and 24 VDC circuits do not
+              operate.</prompt>
+            </link>
+          </resultwithstate>
+        </then>
+      </if>
+    </evaluate>
+  </testwithstate>
+</diagnosticwp>
